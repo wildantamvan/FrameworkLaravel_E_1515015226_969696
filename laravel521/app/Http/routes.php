@@ -16,14 +16,7 @@ Route::get('/', function () {
 
 });
 
-Route::get('/public/{publik}', function ($publik) {
-    return "hi haha $publik";
-    //return view('public');
+Route::get('/public', function () {
+    return view('public');
 
-});
-
-
-
-Route::get('/rubik/{publiks?}', function ($publiks = "test") {
-    return "berita $publiks belum dibaca";
 });
