@@ -28,7 +28,7 @@
 						<a href="{{url('pengguna/edit/'.$pengguna->id)}}" class="btn btn-arning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
 						<i class="fa fa-pencil"></i></a>
 
-						<a href="{{url('pengguna/lihat/'.$pengguna->id)}}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="lihat"><i class="fa fa-eye"></i></a>
+						<a href="{{url('pengguna/'.$pengguna->id)}}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="lihat"><i class="fa fa-eye"></i></a>
 						<a href="{{url('pengguna/hapus/'.$pengguna->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="hapus"><i class="fa fa-remove"></i></a>
 					</div>
 				</td>

@@ -23,11 +23,9 @@ Route::get('/public/{publik}', function ($publik) {
 });
 
 Route::get('pengguna','penggunacontroller@awal'); 
-
 Route::get('pengguna/tambah','penggunacontroller@tambah');
-
-Route::get('pengguna/{pengguna}','penggunacontroller@lihat');
 Route::get('pengguna/simpan','penggunacontroller@simpan');
+Route::get('pengguna/{pengguna}','penggunacontroller@lihat');
 Route::get('pengguna/edit/{pengguna}','penggunacontroller@edit');
 Route::post('pengguna/edit/{pengguna}','penggunacontroller@update');
 Route::get('pengguna/edit/{pengguna}','penggunacontroller@hapus');
@@ -72,18 +70,19 @@ Route::get('jadwalmatakuliah/tambah','jadwalmatakuliahcontroller@tambah');
 
 
 
+Route::get('ruangan','ruangancontroller@awal'); 
+
+Route::get('ruangan/tambah','ruangancontroller@tambah');
+
+
 Route::post('ruangan/simpan','ruangancontroller@simpan');
 
 Route::get('ruangan/edit/{ruangan}','ruangancontroller@edit');
-Route::get('ruangan/edir/{ruangan}','ruangancontroller@update');
+Route::get('ruangan/edit/{ruangan}','ruangancontroller@update');
 
 Route::get('ruangan/hapus/{ruangan}','ruangancontroller@hapus'); 
 
 
-
-Route::get('ruangan','ruangancontroller@awal'); 
-
-Route::get('ruangan/tambah','ruangancontroller@tambah');
 
 Route::get('mahasiswa','mahasiswacontroller@awal'); 
 

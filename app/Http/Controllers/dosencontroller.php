@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use pp\dosen;
+use App\dosen;
 
 class dosencontroller extends Controller
 {
