@@ -80,7 +80,7 @@ text-align: right;
                     <nav class="navbar navbar-default navbar-fixed-bottom">
                         <footer class="container">
                             <!-- please dont delete this -->
-                            created by <a href="http://facebook.com/wildan.sajid"><span><i class="fa fa-twitter" style="color:#1da1f2"></i>@naufalsaputra</span>
+                            created by <a href="http://facebook.com/wildan.sajid"><span><i class="fa fa-twitter" style="color:#1da1f2"></i>@wildan</span>
                         </a>
                         <!--/ please dont delete this -->
                         </footer>

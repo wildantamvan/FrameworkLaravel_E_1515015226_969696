@@ -13,6 +13,7 @@
 				<th>No.</th>
 				<th>id matakuliah</th>
 				<th>Kode matakuliah</th>
+								<th>Keterangan matakuliah</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
