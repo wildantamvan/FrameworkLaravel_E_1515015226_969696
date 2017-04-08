@@ -14,7 +14,7 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label" id="dosen_matakuliah_id"> Nama matakuliah</label>
 	<div class="col-sm-10">
-		{!! Form::select('dosen_matakuliah_id',$dosen_matakuliah->listDosenDanMatakuliah(),null,['class'=>'form-control','id'=> 'dosen_matakuliah_id','placeholder'=>"Dosen"]) !!}		
+		{!! Form::select('dosen_matakuliah_id',$dosen_matakuliah->listDosenDanMatakuliah(),null,['class'=>'form-control','id'=> 'dosen_matakuliah_id','placeholder'=>"matakuliah"]) !!}		
 	</div>
 </div>
 

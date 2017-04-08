@@ -6,14 +6,29 @@
 	</div>
 	<table class="table">
 		<tr>
-			<td>Dosen</td>
+			<td>nama mahasiswa</td>
+			<td>:</td>
+			<td>{{$jadwalmatakuliah->mahasiswa->nama}}</td>
+		</tr>
+<tr>
+			<td>nim mahasiswa</td>
+			<td>:</td>
+			<td>{{$jadwalmatakuliah->mahasiswa->nim}}</td>
+		</tr>
+		<tr>
+			<td> nama Dosen</td>
 			<td>:</td>
 			<td>{{$jadwalmatakuliah->dosen_matakuliah->dosen->nama}}</td>
 		</tr>
 		<tr>
-			<td>ID Matakuliah</td>
+			<td>nip dosen</td>
 			<td>:</td>
-			<td>{{$jadwalmatakuliah->matakuliah_id}}</td>
+			<td>{{$jadwalmatakuliah->dosen_matakuliah->dosen->nip}}</td>
+		</tr>
+		<tr>
+			<td>nama matakuliah</td>
+			<td>:</td>
+			<td>{{$jadwalmatakuliah->dosen_matakuliah->matakuliah->title}}</td>
 		</tr>
 		<tr>
 			<td class="col-xs-4">Dibuat tanggal</td>
@@ -23,7 +38,7 @@
 		<tr>
 			<td class="col-xs-4">Diperbarui Tanggal</td>
 			<td class="col-xs-1">:</td>
-			<td>{{$jadwalmatakuliah->update_at}}</td>
+			<td>{{$jadwalmatakuliah->updated_at}}</td>
 		</tr>
 	</table>
 </div>

@@ -25,7 +25,7 @@
 				<td>{{ $mahasiswa->nim or 'nim kosong'}}</td>
 				<td>
 					<div class="btn-group" role="group">
-						<a href="{{url('mahasiswa/edit/'.$mahasiswa->id)}}" class="btn btn-arning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
+						<a href="{{url('mahasiswa/edit/'.$mahasiswa->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
 						<i class="fa fa-pencil"></i></a>
 
 						<a href="{{url('mahasiswa/'.$mahasiswa->id)}}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="lihat"><i class="fa fa-eye"></i></a>

@@ -43,7 +43,7 @@ text-align: right;
             <ul class="dropdown-menu" aria-LabeLLedby="dLabel">
             <li><a href="{{url('mahasiswa')}}"> data mahasiswa</a></li>
             <li class="divider"></li>
-                <li ><a href="{{url('jadwal_matakuliah')}}">jadwal mahasiswa</a></li>
+                <li ><a href="{{url('jadwalmatakuliah')}}">jadwal mahasiswa</a></li>
             </ul>
         </li>
         <li class="dropdown active">
