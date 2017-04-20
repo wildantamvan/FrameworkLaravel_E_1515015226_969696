@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\ruangan;
 use redirect;
+use App\Http\Requests\RuanganRequest;
 
 class ruangancontroller extends Controller
 {
@@ -20,8 +21,12 @@ class ruangancontroller extends Controller
         return view('ruangan.tambah');
     }
 
-    public function simpan(Request $input)
-    {
+    public function simpan(RuanganRequest $input)
+    {$this->validate($input,[
+            'title'=>'required'
+            
+            ]);
+
         $ruangan = new ruangan();
         $ruangan->title = $input->title;
         $informasi = $ruangan->save() ? 'berhasil simpan data' : 'gagal simpan data';
@@ -40,8 +45,11 @@ class ruangancontroller extends Controller
         return view('ruangan.lihat')->with(array('ruangan'=>$ruangan));
     }
 
-public function update($id,request $input)
-{
+public function update($id,RuanganRequest $input)
+{$this->validate($input,[
+            'title'=>'required'
+            ]);
+
     $ruangan = ruangan::find($id);
     $ruangan->title = $input->title;
        $informasi = $ruangan->save() ? 'berhasil update data' : 'gagal update data';

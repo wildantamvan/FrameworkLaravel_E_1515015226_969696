@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\matakuliah;
 use redirect;
+use App\Http\Requests\MatakuliahRequest;
+
 
 class matakuliahcontroller extends Controller
 {
@@ -20,8 +22,13 @@ class matakuliahcontroller extends Controller
         return view('matakuliah.tambah');
     }
 
-    public function simpan(request $input)
+    public function simpan(MatakuliahRequest $input)
     {
+        $this->validate($input,[
+            'title'=>'required',
+            'keterangan'=>'required',
+            ]);
+
         $matakuliah = new matakuliah();
         $matakuliah->title = $input->title;
         $matakuliah->keterangan = $input->keterangan;
@@ -41,8 +48,12 @@ class matakuliahcontroller extends Controller
         return view('matakuliah.lihat')->with(array('matakuliah'=>$matakuliah));
     }
 
-public function update($id,request $input)
-{
+public function update($id, MatakuliahRequest $input)
+{$this->validate($input,[
+            'title'=>'required',
+            'keterangan'=>'required',
+            ]);
+
     $matakuliah = matakuliah::find($id);
     $matakuliah->title = $input->title;
     $matakuliah->keterangan = $input->keterangan;

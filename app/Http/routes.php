@@ -11,15 +11,80 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+ //   return view('welcome');
+//});
 
 Route::get('/public/{publik}', function ($publik) {
     return "hi haha $publik";
     //return view('public');
 
 });
+
+Route::get('treq',function (Illuminate\Http\Request $request)
+{
+	echo "ini adalah request dari method get ". $request->nama;
+});
+use Illuminate\Http\Request;
+ Route::get('formnyanama',function ()
+ {
+ 	echo Form::open(['url'=>'formnama']).
+ 			Form::label('nama').
+ 			Form::text('nama',null).
+ 			form::submit('kirim').
+ 			form::close();
+ });
+
+
+ Route::post('formnama',function (Request $request)
+ {
+ 	echo "hasil dari form input nama tadi : ".$request->nama;
+ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
+
+
+
+Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
+
+Route::get('/',function()
+{
+	return \App\dosen_matakuliah::whereHas('dosen',function($query)
+{
+	$query->where('nama','like','%d%');
+})
+
+	-> orWhereHas('matakuliah',function ($kueri)
+		{
+			$kueri->where('title','like','%s%');
+		}) ->with('dosen','matakuliah')->groupBy('dosen_id')->get();
+	
+});
+
+
+
+
+
 Route::get('pengguna','penggunacontroller@awal'); 
 Route::get('pengguna/tambah','penggunacontroller@tambah');
 Route::get('pengguna/{pengguna}','penggunacontroller@lihat');

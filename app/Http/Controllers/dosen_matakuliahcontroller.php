@@ -9,7 +9,7 @@ use App\dosen_matakuliah;
 use App\dosen;
 use App\matakuliah;
 use App\jadwalmatakuliah;
-
+use App\Http\Requests\Dosen_matakuliahRequest;
 
 
 class dosen_matakuliahcontroller extends Controller
@@ -28,8 +28,13 @@ class dosen_matakuliahcontroller extends Controller
         return $this->simpan();
     }
 
-    public function simpan(Request $input)
+    public function simpan(Dosen_matakuliahRequest $input)
     {
+        $this->validate($input,[
+            'dosen_id'=>'required',
+            'matakuliah_id'=>'required'
+            ]);
+
         $dosen_matakuliah = new Dosen_Matakuliah($input->only('dosen_id','matakuliah_id'));
             if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil disimpan";
             return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
@@ -44,8 +49,12 @@ class dosen_matakuliahcontroller extends Controller
         $matakuliah = new Matakuliah;
         return view('dosen_matakuliah.edit',compact('dosen','matakuliah','dosen_matakuliah'));
     }
-    public function update($id,Request $input)
-    {
+    public function update($id, Dosen_matakuliahRequest $input)
+    {$this->validate($input,[
+            'dosen_id'=>'required',
+            'matakuliah_id'=>'required'
+            ]);
+
         $dosen_matakuliah = Dosen_Matakuliah::find($id);
         $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));
         if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil diperbarui";

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\pengguna;
 use App\dosen;
 use redirect;
+use App\Http\Requests\DosenRequest;
 class dosencontroller extends Controller
 {
     protected $informasi = 'gagal melakukan aksi';
@@ -21,8 +22,14 @@ class dosencontroller extends Controller
         return view('dosen.tambah');
     }
 
-    public function simpan(request $input)
-    {  
+    public function simpan(DosenRequest $input)
+    {  $this->validate($input,[
+            'nama'=>'required',
+            'nip'=>'required|Integer',
+            'alamat'=>'required',
+            'username'=>'required'
+            ]);
+
      $pengguna= new pengguna($input->only('username','password'));
     if ($pengguna->save()) {
         $dosen = new dosen;
@@ -47,8 +54,13 @@ class dosencontroller extends Controller
         return view('dosen.lihat')->with(array('dosen'=>$dosen));
     }
 
-public function update($id,request $input)
-{
+public function update($id,DosenRequest $input)
+{$this->validate($input,[
+            'nama'=>'required',
+            'nip'=>'required|Integer',
+            'alamat'=>'required',
+            'username'=>'required'
+            ]);
     $dosen = dosen::find($id);
     $pengguna = $dosen->pengguna;
     $dosen->nama = $input->nama;
