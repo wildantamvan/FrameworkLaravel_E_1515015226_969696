@@ -63,7 +63,9 @@ text-align: right;
                         <li><a href="{{url('matakuliah')}}">matakuliah </a></li>
                         
                     </ul>
-                </li>
+                                    <li class="dropdown active"><a href="{{ url('logout')}}">logout</a></li>
+
+                
             </ul>
             <div><!--/.nav-collapse --></div>
             </nav>
@@ -76,12 +78,15 @@ text-align: right;
                     </div>
                     @endif
 
-                    @if(count($errors) > 0)
+                    @if(count($errors) > 0 )
                     <div class="alert alert-danger"><ul>
                         @foreach ($errors->all() as $error)
+                        
+
                         <li>{{ $error }}</li>
                         @endforeach
-                    </ul></div>
+                    </ul>
+                    </div>
                     @endif
                     @yield('container')
                     </div>

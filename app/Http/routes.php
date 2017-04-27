@@ -15,11 +15,15 @@
  //   return view('welcome');
 //});
 
+
+
+
 Route::get('/public/{publik}', function ($publik) {
     return "hi haha $publik";
     //return view('public');
 
 });
+
 
 Route::get('treq',function (Illuminate\Http\Request $request)
 {
@@ -67,24 +71,31 @@ Route::get('ujiHas','RelationshipRebornController@ujiHas');
 
 Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
 
-Route::get('/',function()
-{
-	return \App\dosen_matakuliah::whereHas('dosen',function($query)
-{
-	$query->where('nama','like','%d%');
-})
+// Route::get('/',function()
+// {
+// 	return \App\dosen_matakuliah::whereHas('dosen',function($query)
+// {
+// 	$query->where('nama','like','%d%');
+// })
 
-	-> orWhereHas('matakuliah',function ($kueri)
-		{
-			$kueri->where('title','like','%s%');
-		}) ->with('dosen','matakuliah')->groupBy('dosen_id')->get();
+// 	-> orWhereHas('matakuliah',function ($kueri)
+// 		{
+// 			$kueri->where('title','like','%s%');
+// 		}) ->with('dosen','matakuliah')->groupBy('dosen_id')->get();
 	
-});
+// });
 
 
 
+Route::get('/login','SesiController@form');
+Route::post('/login','SesiController@validasi');
+Route::get('/logout','SesiController@logout'); 
+Route::get('/','SesiController@index');
 
 
+
+Route::group(['middleware'=>'AutentifikasiUser'], function ()
+{
 Route::get('pengguna','penggunacontroller@awal'); 
 Route::get('pengguna/tambah','penggunacontroller@tambah');
 Route::get('pengguna/{pengguna}','penggunacontroller@lihat');
@@ -119,7 +130,6 @@ Route::get('matakuliah/hapus/{matakuliah}','matakuliahcontroller@hapus');
 
 
 
-//==============================================================
 Route::get('jadwalmatakuliah','jadwalmatakuliahcontroller@awal'); 
 
 Route::get('jadwalmatakuliah/tambah','jadwalmatakuliahcontroller@tambah');
@@ -128,7 +138,6 @@ Route::get('jadwalmatakuliah/{jadwalmatakuliah}','jadwalmatakuliahcontroller@lih
 Route::get('jadwalmatakuliah/edit/{jadwalmatakuliah}','jadwalmatakuliahcontroller@edit');
 Route::post('jadwalmatakuliah/edit/{jadwalmatakuliah}','jadwalmatakuliahcontroller@update');
 Route::get('jadwalmatakuliah/hapus/{jadwalmatakuliah}','jadwalmatakuliahcontroller@hapus');
-//==============================================================
 
 
 
@@ -141,9 +150,6 @@ Route::get('ruangan/edit/{ruangan}','ruangancontroller@edit');
 Route::post('ruangan/edit/{ruangan}','ruangancontroller@update');
 
 Route::get('ruangan/hapus/{ruangan}','ruangancontroller@hapus'); 
-/*
-================================================
-*/
 
 Route::get('dosen','dosencontroller@awal');
  
@@ -166,8 +172,15 @@ Route::get('mahasiswa/edit/{mahasiswa}','mahasiswacontroller@edit');
 Route::post('mahasiswa/edit/{mahasiswa}','mahasiswacontroller@update');
 Route::get('mahasiswa/hapus/{mahasiswa}','mahasiswacontroller@hapus');
 
+});
 
 
+
+
+
+Route::get('/',function(){
+return view('master');	
+});
 
 Route::get('/rubik/{publiks?}', function ($publiks = "test") {
     return "berita $publiks belum dibaca";
